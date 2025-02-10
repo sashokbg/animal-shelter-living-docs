@@ -1,0 +1,8 @@
+site_name: My Docs
+nav:
+  - Home: index.md
+  - Features:
+    - Add Animal: features/add_animal.md
+
+theme:
+  name: material
