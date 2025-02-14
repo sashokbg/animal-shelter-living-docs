@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from './animal-profile.module.css';
 
@@ -11,24 +11,13 @@ export default function AnimalProfile() {
 
   useEffect(() => {
     if (id) {
-      // Simulate fetching animal data
-      fetchAnimalData(id);
+      // Fetch animal details from the server
+      fetch(`/api/animals/get-animal?id=${id}`)
+        .then(response => response.json())
+        .then(data => setAnimal(data))
+        .catch(error => console.error('Error fetching animal data:', error));
     }
   }, [id]);
-
-  const fetchAnimalData = (animalId) => {
-    // Simulate an API call to fetch animal data
-    const animalData = {
-      1: { name: 'Fluffy', species: 'Cat', age: 3, notes: 'Very friendly' },
-      2: { name: 'Buddy', species: 'Dog', age: 5, notes: 'Loves to play' },
-    };
-
-    if (animalData[animalId]) {
-      setAnimal(animalData[animalId]);
-    } else {
-      setError('This page could not be found.');
-    }
-  };
 
   if (error) {
     return (
@@ -51,6 +40,7 @@ export default function AnimalProfile() {
       <p className={`${styles.text} name`}><strong>Name:</strong> {animal.name}</p>
       <p className={`${styles.text} species`}><strong>Species:</strong> {animal.species}</p>
       <p className={`${styles.text} age`}><strong>Age:</strong> {animal.age}</p>
+      {animal.pictureUrl && <img src={animal.pictureUrl} alt={`${animal.name}'s profile`} className={styles.profileImage} />}
       <p className={`${styles.text} notes`}><strong>Notes:</strong> {animal.notes}</p>
     </div>
   );

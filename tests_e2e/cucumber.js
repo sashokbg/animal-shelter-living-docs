@@ -1,10 +1,11 @@
 common = {
-  tags: "@focus",
   // tags: "@automated",
+  tags: "@focus",
   format: [
-    "message:report/gherkin_messages.ndjson",
+    ["message", "report/gherkin_messages.ndjson"],
     "summary",
-    "html:report/report.html",
+    "progress-bar",
+    ["html", "report/report.html"],
   ],
   requireModule: ["ts-node/register"],
   require: ["steps/**/*.ts", "helpers/**/*.ts"],

@@ -3,7 +3,7 @@
 
 ## Background
 
-Given the user is on the "Add New Animal" page
+* Given the user is on the "Add New Animal" page
 
 ## Scenario: Successfully add a new animal
 

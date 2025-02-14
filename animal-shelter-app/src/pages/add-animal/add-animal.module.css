@@ -39,4 +39,11 @@
 
 .button:hover {
   background-color: var(--button-primary-hover);
+}
+
+.preview {
+  max-width: 100%;
+  height: auto;
+  margin-top: 16px;
+  border-radius: 4px;
 } 

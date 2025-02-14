@@ -1,13 +1,18 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './animal-list.module.css';
 
 export default function AnimalList() {
-  // Simulated animal data
-  const animals = [
-    { id: 1, name: 'Fluffy', species: 'Cat', age: 3 },
-    { id: 2, name: 'Buddy', species: 'Dog', age: 5 },
-  ];
+  const [animals, setAnimals] = useState([]);
+
+  useEffect(() => {
+    // Fetch animal data from the API
+    fetch('/api/animals/list-animals')
+      .then(response => response.json())
+      .then(data => setAnimals(data))
+      .catch(error => console.error('Error fetching animal data:', error));
+  }, []);
 
   return (
     <div className={styles.container}>

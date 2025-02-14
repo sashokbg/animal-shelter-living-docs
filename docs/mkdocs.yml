@@ -3,6 +3,18 @@ nav:
   - Home: index.md
   - Features:
     - Add Animal: features/add_animal.md
+    - Consult Animal Profile: features/consult_animal_profile.md
 
 theme:
   name: material
+
+plugins:
+  - gherkin-plugin:
+      show_results: true
+      messages_path: "../tests_e2e/report/gherkin_messages.ndjson"
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+

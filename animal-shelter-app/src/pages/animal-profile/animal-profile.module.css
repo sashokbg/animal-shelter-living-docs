@@ -16,4 +16,11 @@
 .text {
   font-size: 16px;
   margin-bottom: 8px;
+}
+
+.profileImage {
+  max-width: 100%;
+  height: auto;
+  margin-top: 16px;
+  border-radius: 4px;
 } 
