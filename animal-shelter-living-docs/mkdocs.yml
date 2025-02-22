@@ -6,10 +6,15 @@ nav:
     - Consult Animal Profile: features/consult_animal_profile.md
     - Add Pet Picture: features/add_pet_picture.md
 
+watch:
+  - ./tests_e2e/report
+  
+
 theme:
   name: material
 
 plugins:
+  - glightbox
   - gherkin-plugin:
       show_results: true
       tests_root_path: "./tests_e2e"

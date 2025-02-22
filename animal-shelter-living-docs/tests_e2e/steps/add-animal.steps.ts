@@ -7,7 +7,7 @@ import { fillAnimalForm } from "./shared_steps/shared";
 
 When('the user fills out the animal details', async function (this: AppWorld) {
   await this.page.goto(`${host()}/add-animal`);
-
+  
   await fillAnimalForm(this.page, 'Fluffy', 'Cat', '3');
 });
 
@@ -20,6 +20,13 @@ Then('the system should confirm the animal has been added', async function (this
   if (!confirmationMessage.includes('Animal added')) {
     throw new Error('Confirmation message not found');
   }
+
+  // Take a screenshot as a Buffer and attach it
+  let screenshot = await this.page.screenshot({
+    type: "png",
+    encoding: "base64",
+  });
+  this.attach(screenshot, { mediaType: "base64:image/png" });
 });
 
 When('the user submits the form with incomplete details', async function (this: AppWorld) {
