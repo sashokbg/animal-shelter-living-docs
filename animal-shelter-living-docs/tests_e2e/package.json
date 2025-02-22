@@ -14,7 +14,7 @@
     "@cucumber/cucumber": "^11.2.0",
     "assert": "^2.1.0",
     "expect": "^29.7.0",
-    "ts-node": "^10.9.2",
-    "puppeteer": "^24.2.0"
+    "puppeteer": "^24.2.0",
+    "ts-node": "^10.9.2"
   }
 }

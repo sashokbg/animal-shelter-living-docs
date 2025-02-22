@@ -3,19 +3,14 @@ import { Given, Then, When } from "@cucumber/cucumber";
 import { AppWorld } from "../helpers/app_world";
 import { host, getText } from "../helpers/puppeteer_helper";
 import path from "path";
-
-async function fillAnimalForm(page) {
-    await page.type('input[name="name"]', 'Buddy');
-    await page.select('select[name="species"]', 'dog');
-    await page.type('input[name="age"]', '2');
-}
+import { fillAnimalForm } from "./shared_steps/shared";
 
 Given('the user is on the "Add New Animal" page', async function (this: AppWorld) {
     await this.page.goto(`${host()}/add-animal`);
 });
 
 When('the user uploads a picture of the pet', async function (this: AppWorld) {
-    await fillAnimalForm(this.page);
+    await fillAnimalForm(this.page, 'Buddy', 'dog', '2');
 
     const filePath = path.resolve(__dirname, '../assets/dog_profile_pic.jpg');
     const input = await this.page.$('input[name="picture"]');
@@ -42,7 +37,7 @@ Then('the picture should be displayed on the animal\'s profile page', async func
 });
 
 When('the user tries to upload an image that exceeds the size limit', async function (this: AppWorld) {
-    await fillAnimalForm(this.page);
+    await fillAnimalForm(this.page, 'Buddy', 'dog', '2');
 
     const filePath = path.resolve(__dirname, '../assets/large-image.jpg');
     const input = await this.page.$('input[name="picture"]');
@@ -50,7 +45,7 @@ When('the user tries to upload an image that exceeds the size limit', async func
 });
 
 When('the user tries to upload a file that is not an image', async function (this: AppWorld) {
-    await fillAnimalForm(this.page);
+    await fillAnimalForm(this.page, 'Buddy', 'dog', '2');
 
     const filePath = 'path/to/unsupported-file.txt'; // Path to a non-image file
     const input = await this.page.$('input[name="picture"]');

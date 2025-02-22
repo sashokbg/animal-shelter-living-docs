@@ -4,6 +4,7 @@ nav:
   - Features:
     - Add Animal: features/add_animal.md
     - Consult Animal Profile: features/consult_animal_profile.md
+    - Add Pet Picture: features/add_pet_picture.md
 
 theme:
   name: material
@@ -11,7 +12,8 @@ theme:
 plugins:
   - gherkin-plugin:
       show_results: true
-      messages_path: "../tests_e2e/report/gherkin_messages.ndjson"
+      tests_root_path: "./tests_e2e"
+      messages_path: "./tests_e2e/report/gherkin_messages.ndjson"
 
 markdown_extensions:
   - admonition

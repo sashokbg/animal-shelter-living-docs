@@ -3,12 +3,12 @@ import { Then, When } from "@cucumber/cucumber";
 
 import { AppWorld } from "../helpers/app_world";
 import { host, getText } from "../helpers/puppeteer_helper";
+import { fillAnimalForm } from "./shared_steps/shared";
 
 When('the user fills out the animal details', async function (this: AppWorld) {
   await this.page.goto(`${host()}/add-animal`);
-  await this.page.type('input[name="name"]', 'Fluffy');
-  await this.page.type('input[name="species"]', 'Cat');
-  await this.page.type('input[name="age"]', '3');
+
+  await fillAnimalForm(this.page, 'Fluffy', 'Cat', '3');
 });
 
 When('submits the form', async function (this: AppWorld) {

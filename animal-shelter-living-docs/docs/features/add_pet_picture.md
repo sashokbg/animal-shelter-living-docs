@@ -4,7 +4,6 @@
 
 * Given the user is on the "Add New Animal" page
 
-`@focus`
 ## Scenario: Successfully add a pet picture
 
 * When the user uploads a picture of the pet

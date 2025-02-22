@@ -23,7 +23,10 @@ export default async function handler(req, res) {
         const pictureUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
         const data = await fs.readFile(animalsFilePath, 'utf8');
-        const animals = JSON.parse(data);
+        let animals = [];
+        if (data) {
+          animals = JSON.parse(data);
+        }
 
         const newAnimal = {
           id: animals.length + 1,

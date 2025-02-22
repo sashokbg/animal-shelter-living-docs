@@ -4,15 +4,31 @@ import Link from 'next/link';
 import styles from './animal-list.module.css';
 
 export default function AnimalList() {
-  const [animals, setAnimals] = useState([]);
+  const [animals, setAnimals] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Fetch animal data from the API
     fetch('/api/animals/list-animals')
       .then(response => response.json())
       .then(data => setAnimals(data))
-      .catch(error => console.error('Error fetching animal data:', error));
+      .catch(error => {
+        console.error('Error fetching animal data:', error);
+        setError('Failed to load animals');
+      });
   }, []);
+
+  if (error) {
+    return <p className={styles.error}>{error}</p>;
+  }
+
+  if (animals === null) {
+    return <p>Loading...</p>;
+  }
+
+  if (animals.length === 0) {
+    return <p>No animals in database</p>;
+  }
 
   return (
     <div className={styles.container}>

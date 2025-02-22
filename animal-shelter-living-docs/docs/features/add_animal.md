@@ -1,4 +1,3 @@
-`@automated`
 # Feature: Add Animal
 
 ## Background

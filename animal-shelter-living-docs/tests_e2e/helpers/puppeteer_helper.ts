@@ -48,7 +48,7 @@ export const takeRawScreenshot = async (page: Page) => {
 };
 
 export const getText = async (page: Page, selector: string) => {
-  await page.waitForSelector(selector);
+  await page.waitForSelector(selector, { timeout: 1000 });
   const element = await page.$(selector);
-  return await page.evaluate((el) => el!.textContent, element);
+  return await page.evaluate((el) => el!.textContent, element, { timeout: 1000 });
 };

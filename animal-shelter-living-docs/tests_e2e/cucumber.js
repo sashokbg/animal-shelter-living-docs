@@ -1,16 +1,22 @@
+const path = require('path');
+
+const docsDirPath = path.resolve(__dirname, '../docs/features')
+
+console.log('Path is', docsDirPath)
+
 common = {
   // tags: "@automated",
-  tags: "@focus",
+  // tags: "@focus",
   format: [
     ["message", "report/gherkin_messages.ndjson"],
-    "summary",
+    "@cucumber/pretty-formatter",
     "progress-bar",
     ["html", "report/report.html"],
   ],
   requireModule: ["ts-node/register"],
   require: ["steps/**/*.ts", "helpers/**/*.ts"],
   paths: [
-    "../docs/docs/features/**/*.md",
+    `${docsDirPath}/**/*.md`,
   ],
 };
 

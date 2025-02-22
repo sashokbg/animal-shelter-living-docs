@@ -1,4 +1,3 @@
-`@automated`
 # Feature: Consult Animal Profile
 
 ## Background:

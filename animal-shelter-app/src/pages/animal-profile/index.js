@@ -40,7 +40,7 @@ export default function AnimalProfile() {
       <p className={`${styles.text} name`}><strong>Name:</strong> {animal.name}</p>
       <p className={`${styles.text} species`}><strong>Species:</strong> {animal.species}</p>
       <p className={`${styles.text} age`}><strong>Age:</strong> {animal.age}</p>
-      {animal.pictureUrl && <img src={animal.pictureUrl} alt={`${animal.name}'s profile`} className={styles.profileImage} />}
+      {animal.pictureUrl && <img src={animal.pictureUrl} id="image-preview" alt={`${animal.name}'s profile`} className={styles.profileImage} />}
       <p className={`${styles.text} notes`}><strong>Notes:</strong> {animal.notes}</p>
     </div>
   );
