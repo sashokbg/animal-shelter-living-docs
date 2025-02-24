@@ -15,6 +15,7 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     upload.single('picture')(req, {}, async (err) => {
       if (err) {
+        console.error("Failed to upload image", err);
         return res.status(500).json({ error: 'Failed to upload image' });
       }
 
@@ -42,11 +43,12 @@ export default async function handler(req, res) {
 
         res.status(201).json(newAnimal);
       } catch (error) {
-        res.status(500).json({ error: 'Failed to add animal' });
+        console.error("Failed to add an animal", error);
+        res.status(500).json({ error: 'Failed to add animal 2',  details: JSON.stringify(error) });
       }
     });
   } else {
     res.setHeader('Allow', ['POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-} 
+}

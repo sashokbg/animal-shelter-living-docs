@@ -1,15 +1,16 @@
-import { AppWorld } from "./app_world";
-import puppeteer, { Browser, connect, Page } from "puppeteer";
+import {AppWorld} from "./app_world";
+import puppeteer, {Browser, connect, Page} from "puppeteer";
 import * as fs from "node:fs";
+import path from "path";
 
 export const host = () => {
-  let host = process.env.PAM_URL || "http://localhost:3000";
+  let host = process.env.APP_URL || "http://localhost:3000";
   console.log("Host is", host);
   return host;
 };
 
 export const uploads_dir = () => {
-  let uploads_dir = process.env.PAM_UPLOADS_DIR || "../test_data";
+  let uploads_dir = process.env.APP_UPLOADS_DIR || path.resolve(`${__dirname}/../assets`);
   console.log("Uploads dir is:", uploads_dir);
 
   return uploads_dir;
@@ -48,7 +49,7 @@ export const takeRawScreenshot = async (page: Page) => {
 };
 
 export const getText = async (page: Page, selector: string) => {
-  await page.waitForSelector(selector, { timeout: 1000 });
+  await page.waitForSelector(selector, {timeout: 1000});
   const element = await page.$(selector);
-  return await page.evaluate((el) => el!.textContent, element, { timeout: 1000 });
+  return await page.evaluate((el) => el!.textContent, element, {timeout: 1000});
 };

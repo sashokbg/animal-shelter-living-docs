@@ -1,0 +1,14 @@
+services:
+  browser:
+    image: "browserless/chrome"
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./animal-shelter-living-docs/tests_e2e/assets:/usr/src/app/assets
+
+  animal_shelter_app:
+    build:
+      context: animal-shelter-app
+    ports:
+      - "3000:3000"
+

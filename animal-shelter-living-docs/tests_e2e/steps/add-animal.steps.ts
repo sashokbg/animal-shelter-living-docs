@@ -7,7 +7,7 @@ import { fillAnimalForm } from "./shared_steps/shared";
 
 When('the user fills out the animal details', async function (this: AppWorld) {
   await this.page.goto(`${host()}/add-animal`);
-  
+
   await fillAnimalForm(this.page, 'Fluffy', 'Cat', '3');
 });
 

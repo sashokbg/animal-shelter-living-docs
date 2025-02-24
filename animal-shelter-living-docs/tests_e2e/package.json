@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js",
+    "tests:docker": "BROWSERLESS_ENDPOINT=\"ws://localhost:3001/\" APP_URL=\"http://animal_shelter_app:3000\" APP_UPLOADS_DIR=\"/usr/src/app/assets\" cucumber-js --profile=ci"
   },
   "keywords": [],
   "author": "",
