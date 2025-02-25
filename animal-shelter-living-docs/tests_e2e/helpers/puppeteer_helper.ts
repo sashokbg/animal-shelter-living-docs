@@ -26,7 +26,7 @@ export const openBrowser = async (world: AppWorld): Promise<Browser> => {
     browser = await connect({
       acceptInsecureCerts: true,
       browserWSEndpoint:
-        process.env.BROWSERLESS_ENDPOINT || "ws://browserless-chrome:3000/",
+        process.env.BROWSERLESS_ENDPOINT || "ws://browserless_chrome:3000/",
     });
   } else {
     browser = await puppeteer.launch({

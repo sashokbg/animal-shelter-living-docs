@@ -1,5 +1,5 @@
 services:
-  browser:
+  browserless_chrome:
     image: "browserless/chrome"
     ports:
       - "3001:3000"
